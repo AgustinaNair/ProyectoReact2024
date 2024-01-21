@@ -1,0 +1,19 @@
+.icono{
+    color: black;
+    font-size: 34px;
+}
+.button{
+    padding: 3px;
+    background-color: #6da0ea;
+}
+p{
+    color: white;
+    background-color: red;
+    border: #9c0505 2px solid;
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+}
+.container{
+    display: flex;
+}
