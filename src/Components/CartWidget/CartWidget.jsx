@@ -7,7 +7,7 @@ const CartWidget = () => {
         <button className="button">
             <IoCartOutline className="icono"/>
         </button>
-        <p>4</p>
+        <p className="contadorCarrito">4</p>
     </div>
   )
 }

@@ -1,3 +1,8 @@
-h2{
-    background-color: #6da0ea;
+.css-18lrjg1-MuiCircularProgress-root{
+    width: 200px !important;
+    height: 200px !important;
+}
+.MuiBox-root{
+    justify-content: center;
+    margin: 70px;
 }
