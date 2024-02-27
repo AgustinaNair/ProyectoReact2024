@@ -6,11 +6,11 @@ import Button from 'react-bootstrap/Button';
 
 const ItemDetail = ({product}) => {
 
-  const onAdd = (contador) =>{
-    console.log(`Agregamos al carrito ${contador} unidades`)
-  }
-  // es un array vacio el product
-  // console.log({product})
+ 
+
+  // const onAdd = (contador) =>{
+  //   console.log(`Agregamos al carrito ${contador} unidades`)
+  // }
     return (
         <div>
             <Card className ='card' >
@@ -23,9 +23,8 @@ const ItemDetail = ({product}) => {
                 <Card.Text>
                   {product.price}
                 </Card.Text>
-                <ItemCount initial={1} stock={3} onAdd={onAdd} />
+                <ItemCount initial={1} stock={3} product={product}/>
                 <Button variant="primary">Volver</Button>
-            {/* {console.log(product) no me lee el product} */}
               </Card.Body>
             </Card>
         </div>

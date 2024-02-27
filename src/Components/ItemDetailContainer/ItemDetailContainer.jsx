@@ -1,27 +1,45 @@
 import React, {useEffect, useState} from 'react'
-import { getItem } from '../../asyncMock'
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import ItemDetail from '../ItemDetail/ItemDetail';
 import { useParams } from 'react-router-dom';
+import { collection, doc, getDoc, getFirestore} from "firebase/firestore";
+
 
 
 const ItemDetailContainer = () => {
 
     const{id} =useParams()
     const [product, setProduct]= useState([])
-    const [loading, setLoaging] = useState (true)
+    const [loading, setLoading] = useState (true)
   
-    // no se guarda el setproducts
+    // no encuentra el documento
+
     useEffect(()=>{
-      getItem(id)
-      .then((res) =>{
-        setProduct(res)
+
+    const db = getFirestore()
+
+      const productosRef = doc(db, "productos", id)
+
+      getDoc(productosRef)
+      .then(documento =>{
+    
+        if (documento.exists()) {
+          console.log('Datos del documento:', documento.data());
+          setProduct({ ...documento.data(), id: documento.id });
+        } else {
+          console.log('No se encontró el documento');
+        }
       })
-      .catch((err) => console.log(err))
-      .finally(()=> setLoaging(false))
-    }, [id])
-  
+      .catch((error) => {
+        console.error('Error obteniendo el documento:', error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+
+    },[id])
+
     return (
       <>
         {
