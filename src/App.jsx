@@ -10,7 +10,6 @@ import Checkout from './Components/Checkout/checkout'
 function App() {
 
 
-  // hacerun deploy : Deploy: netlify o vercel buscar en youtube
   return (
       <div>
         <CartProvider>
