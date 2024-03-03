@@ -3,14 +3,11 @@ import Card from 'react-bootstrap/Card';
 import ItemCount from '../Contador/ItemCount';
 import './ItemDetail.css'
 import Button from 'react-bootstrap/Button';
+import { NavLink } from 'react-router-dom';
 
 const ItemDetail = ({product}) => {
 
- 
 
-  // const onAdd = (contador) =>{
-  //   console.log(`Agregamos al carrito ${contador} unidades`)
-  // }
     return (
         <div>
             <Card className ='card' >
@@ -21,10 +18,14 @@ const ItemDetail = ({product}) => {
                   {product.description}
                 </Card.Text>
                 <Card.Text>
-                  {product.price}
+                  {product.price}$
                 </Card.Text>
-                <ItemCount initial={1} stock={3} product={product}/>
-                <Button variant="primary">Volver</Button>
+                <Card.Text>
+                  Stock disponible: {product.stock}
+                </Card.Text>
+                <ItemCount initial={1} stock={product.stock} product={product}/>
+                <NavLink to="/"><Button variant="primary">Volver</Button></NavLink>
+
               </Card.Body>
             </Card>
         </div>

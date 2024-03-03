@@ -19,7 +19,7 @@ export function CartProvider (props){
         }
         setCart([...newCart]);
     }
-
+    console.log(cart)
 const quantityInCart = () => {
     return cart.reduce((acc, prod) => acc + prod.cantidad, 0);
 };
@@ -31,9 +31,8 @@ const totalPrice = () => {
 const empty = () => {
     setCart([]);
 };
-    
-   
 
-
-    return <CartContext.Provider value={{cart, clickAdd, quantityInCart, totalPrice, empty}}>{props.children}</CartContext.Provider>
+    return <CartContext.Provider value={{cart, clickAdd, quantityInCart, totalPrice, empty}}>
+                {props.children}
+            </CartContext.Provider>
 }

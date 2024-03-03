@@ -1,48 +1,60 @@
-import { addDoc, collection, getFirestore, doc, updateDoc} from 'firebase/firestore';
-import React, { useEffect } from 'react'
+import React,{ useContext, useState } from "react"
+import { CartContext } from '../../context/cartContext';
+import { addDoc, collection, getFirestore} from 'firebase/firestore';
+import { useForm } from "react-hook-form";
+import { Button } from 'react-bootstrap';
+import ListGroup from 'react-bootstrap/ListGroup';
 
 const Checkout = () => {
-    // aca crear los estados de los input
+
+  const { cart, totalPrice, empty } = useContext(CartContext);
+  const {register, handleSubmit} = useForm()
+  const [idCompra, setIdCompra] = useState("")
     
-        const sendOrder = () => {
+    const sendOrder = (data) => {
 
-                const order = {
-                    buyer: {name: "Juan", phone: "1234556", email: "juan@carlos.com"},
-                    items: [{ id: "3", title: "Buzito", price: 30}],
-                    total: 30
-                };
+      const order = {
 
-                const db = getFirestore()
+          buyer: data,
+          items: cart,                
+          total: totalPrice()
 
-                const ordenesRef = collection(db, "ordenes")
+      };
+          
+      const db = getFirestore()
 
-                addDoc(ordenesRef, order)
+      const ordenesRef = collection(db, "ordenes")
 
-            }
-// no hay que hacerla para el proyecto final
-//         const updateOrder = () =>{
+      addDoc(ordenesRef, order)
+        .then((doc) => {
+          setIdCompra(doc.id)
+          empty()
+        })
 
-//                 const db = getFirestore()
-// // en las letras va el id del elemento a editar
-//                 const ordenRef = doc(db, "ordenes", "UajP7uhbrVOhe0EZyXTd")
-
-//                 // lo de aca es lo que queremos editar
-//                 updateDoc(ordenRef, {total : 200})
-//             }
+    }       
     
+    if (idCompra){
+      return (
+        <div  style={{fontFamily:'sans-serif', padding:'30px', color:'#00066c'}}>
+          <h1>Muchas gracias por tu compra</h1>
+          <p style={{fontSize:'1.5rem'}}>Tu número de pedido es: {idCompra}</p>
+        </div>
+      )
+    }
 
   return (
     <div>
-        <form action="">
-            <input type="text" placeholder='Juan Perez'/>
-            <input type="email" placeholder='tuemail@example.com'/>
-            <input type="tel" placeholder='1112341234'/>
-            <button onClick={sendOrder}>Finalizar Compra</button>
-            <button onClick={sendOrder}>guarda orden</button>
-            {/* <button onClick={updateOrder}>actualiza orden</button> */}
+        <h1 style={{fontFamily:'sans-serif', padding:'30px', color:'#00066c'}}>Completa tus datos para finalizar compra</h1>
+        <form onSubmit={handleSubmit(sendOrder)} style={{display: 'flex', justifyContent: 'center'}}>
+          <ListGroup>
+            <ListGroup.Item variant="primary"><input type="text" placeholder='Juan Perez' {...register("nombre")}/></ListGroup.Item>
+            <ListGroup.Item variant="primary"><input type="email" placeholder='tuemail@example.com' {...register("email")}/></ListGroup.Item>
+            <ListGroup.Item variant="primary"><input type="phone" placeholder='1112341234' {...register("telefono")}/></ListGroup.Item>
+            <Button type="submit">Finalizar Compra</Button>
+          </ListGroup>
         </form>
     </div>
   )
 }
-
+      
 export default Checkout

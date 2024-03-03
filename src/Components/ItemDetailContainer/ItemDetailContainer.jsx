@@ -3,7 +3,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import ItemDetail from '../ItemDetail/ItemDetail';
 import { useParams } from 'react-router-dom';
-import { collection, doc, getDoc, getFirestore} from "firebase/firestore";
+import { doc, getDoc, getFirestore} from "firebase/firestore";
 
 
 
@@ -13,7 +13,6 @@ const ItemDetailContainer = () => {
     const [product, setProduct]= useState([])
     const [loading, setLoading] = useState (true)
   
-    // no encuentra el documento
 
     useEffect(()=>{
 
@@ -25,7 +24,6 @@ const ItemDetailContainer = () => {
       .then(documento =>{
     
         if (documento.exists()) {
-          console.log('Datos del documento:', documento.data());
           setProduct({ ...documento.data(), id: documento.id });
         } else {
           console.log('No se encontró el documento');

@@ -30,28 +30,6 @@ const ItemListContainer = () => {
   },[id])
   
 
-// TRAER PRODUCTOS FILTRADOS
-
-// getDocs(productosRef).then(collection =>{
-
-  //   const productos= collection.docs.map((doc) =>{
-    //     return doc.data()
-    //   })
-    //     setProducts (productos)
-    //     setLoaging(false)
-    // })
-
-    
-    //  CODIGO PARA TRAERV UN SOLO PRODUCTO
-    
-      //   const productosRef = doc(db, "productos", "iddelproductodeinternet")
-    
-      //   getDocs(productosRef).then(documento =>{
-    
-      //    if (documento.exists()){
-      //     console.log(documento.data(), documento.id)
-      //    }
-      // },[])
     return (
       <>
       {

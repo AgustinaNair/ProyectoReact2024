@@ -20,7 +20,6 @@ const ItemCount = (props) => {
         setContador(contador-1)
       }
     }
-
   return (
     <div>
       <div className='sumaResta'>

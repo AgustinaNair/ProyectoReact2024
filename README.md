@@ -1,8 +1,16 @@
-# React + Vite
+## E-commerce de Tecno MC
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Esta tienda online vende productos de tecnología como celulares, tablets y notebooks.
+Cuenta con varias categorias de productos que se puede elegir para que el usuario encuentra mas rapido el producto que esta buscando
+Se puede agregar de a varios productos al carrito y si finalizas la compra e lleva a un checkout.
 
-Currently, two official plugins are available:
+## Instalación
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Para instalar este proyecto se deben seguir los siguentes pasos:
+
+- Clonar el repositorio
+- Escribir el comando "npm install" en consola
+- Escribir el comando "npm run dev" en consola
+- Escribir el comando "npm run dev" si desea ver el proyecto en tu navegador
+
+## Muchas gracias por interezarte en este proyecto!

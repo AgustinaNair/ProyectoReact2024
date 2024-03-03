@@ -4,7 +4,8 @@ import Navbar from 'react-bootstrap/Navbar';
 import './NavBar.css'
 import CartWidget from '../CartWidget/CartWidget';
 import Logo from '../Logo/Logo';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 function NavBar() {
   return (
@@ -18,7 +19,7 @@ function NavBar() {
                 <NavLink className={"navLink"} to="/category/notebooks">Notebooks</NavLink>
             </Nav>
             <div>
-            <Nav.Link href="#pricing"> <CartWidget /> </Nav.Link>
+                <Link to={"/cart"} ><CartWidget /></Link>
             </div>
         </Container>
     </Navbar>
